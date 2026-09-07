@@ -12,7 +12,7 @@ This map is parked-heavy on purpose. Every parked line is a lesson we've already
 
 ## Root: `D:\wgu-dashboard\wgu-dashboard\`
 
-No `package.json`, no build step, no `node_modules/`. Four source files, the `learning/` folder, and a `.git/` folder as of Section 1.
+No `package.json`, no build step, no `node_modules/`. Four source files, the `learning/` folder, and a `.git/` folder as of Section 1. Everything is committed — the repo has one commit ("Initialize rudimentary code tracker"), branch `master`, no remote yet.
 
 ### `.git/` — generated
 Git's history store, created by `git init`. Hidden (`ls -a` to see it). Never edit by hand; every git command reads and writes here. Delete it and you lose all commit history but none of your actual files. → [[git-basics]]

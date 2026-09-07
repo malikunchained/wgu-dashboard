@@ -180,11 +180,11 @@ Statuses move on demonstrated evidence only, never self-report. Date format: YYY
 ## Engineering practices (mostly missing — absence is curriculum)
 
 ### git-basics
-- status: introduced
+- status: practicing
 - date: 2026-09-07
 - last-reviewed: 2026-09-07
-- evidence: Ran `git init` (predicted correctly that no files would change, only `.git` added). Read `git status`, explained "untracked" as git not watching the files, and predicted correctly that git can't diff an untracked file because it has no baseline snapshot. Wrote a `.gitignore`; after the `touch Thumbs.db` test, saw that an ignored file is invisible to git, not "listed but ignored". Explained that a secret committed to a public repo is exposed, and (with prompting) that removing it later doesn't clear history.
-- note: `init`, `status`, `.gitignore` covered. Still to do: `add`, `commit`, `log`, writing messages (tasks 4–5). Learner's #1 goal.
+- evidence: Ran `git init` (predicted correctly that no files would change, only `.git` added). Read `git status`, explained "untracked" as git not watching the files. Wrote a `.gitignore`; after the `touch Thumbs.db` test, saw that an ignored file is invisible to git. Explained that a secret committed to a public repo is exposed. Set `user.name`/`user.email` with `--global`; understood why the shell needs quotes around a value with a space; understood the commit email must match the GitHub account to link commits. Ran `git add .`, read the "changes to be committed" state, made a first commit, then used `git commit --amend` to rewrite the message and noticed the commit hash changed — connected that to why amending after pushing is bad. Ended on a clean working tree.
+- note: `init`, `status`, `.gitignore`, `add`, `commit`, `commit --amend`, `log`, identity config all covered hands-on. LF/CRLF warning seen and explained (not configured away). Next: `git remote`, `push` (Section 2).
 
 ### git-branching
 - status: seed
@@ -192,9 +192,14 @@ Statuses move on demonstrated evidence only, never self-report. Date format: YYY
 - note: Branches, merging — introduced once the commit habit is solid.
 
 ### github-remote
-- status: seed
+- status: introduced
+- date: 2026-09-07
+- last-reviewed: 2026-09-07
 - depends-on: git-basics
-- note: Pushing to a remote, what GitHub adds on top of git.
+- status: practicing
+- evidence: Created a public empty repo. Explained git vs GitHub and that GitHub only holds what you push. Added a remote with `git remote add origin <url>`; predicted correctly that it changes no files/commits (just a bookmark in `.git/config`). Confirmed with `git remote -v` (fetch + push directions). Renamed branch `master` → `main` with `git branch -M main`. Pushed with `git push -u origin main` — recovered calmly from an `orgin` typo by reading the error, then authenticated via the browser popup. Read the new "up to date with 'origin/main'" line and understood it as the tracking link `-u` set up.
+- note: `remote`, `origin`, branch rename, `push -u`, upstream tracking, first-push auth all covered. `git push` only sends commits, never uncommitted changes — learner stated this.
+- 2026-09-07 (task 3): matched local and GitHub commit hashes exactly; understood a hash is a commit's content fingerprint and that push copies the same commit object, not a new one. Read `(HEAD -> main, origin/main)` as both pointers on one commit. Then amended the already-pushed commit message: saw "have diverged, 1 and 1 different commits", hit the `non-fast-forward` push rejection, read it calmly, and resolved with `git push --force-with-lease`. Briefly worried amend had deleted the commit — reassured with the "same snapshot, new label, new hash; old commit orphaned but kept ~90 days" model. Now understands concretely why amending after push is trouble (and why it's fine solo).
 
 ### readme
 - status: practicing

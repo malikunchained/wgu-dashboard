@@ -41,7 +41,7 @@ See [project.md](project.md) for scope, [file-map.md](file-map.md) for the file 
 - [x] 2. `git init` in the project root; read `git status` together and understand "untracked".
 - [x] 3. Write `.gitignore`; confirm git now ignores what it should.
 - [x] 4. Write `README.md` — what the app is, who it's for, how to run it.
-- [ ] 5. First commit: `git add` → `git commit` → `git log`; write your own message.
+- [x] 5. First commit: `git add` → `git commit` → `git log`; write your own message.
 - [ ] 6. Reclaim: tour `index.html` tag by tag, break the stylesheet link, predict, observe, restore.
 
 ---
@@ -59,6 +59,14 @@ See [project.md](project.md) for scope, [file-map.md](file-map.md) for the file 
 **Reclaim task:** how the browser loads the page. In `index.html`, the last two lines load `courses.js` then `app.js` — in that order. Swap them. Predict what breaks and why. Open the page, read the browser's error console together (`COURSES is not defined`), swap back, commit the fix-then-revert understanding as a note. Flips `how-the-browser-loads-a-page` toward known.
 
 **You can see:** your repo on github.com with real commit history.
+
+### Tasks
+
+- [x] 1. Create a GitHub account (if needed) and a new **public**, empty repo named `wgu-dashboard`.
+- [x] 2. Connect local to remote: `git remote add origin`, rename branch `master` → `main`, `git push -u origin main` (first push triggers login).
+- [x] 3. Browse the pushed code on github.com; match a commit hash to local `git log`. (Also: amended the pushed commit's message, hit the non-fast-forward rejection, and fixed it with `git push --force-with-lease` — a live demo of why amending after push is trouble.)
+- [ ] 4. Make one small real change → `git status` → `git diff` → `add` → `commit` → `push`; watch it update on GitHub. Nail down working → staged → committed → pushed.
+- [ ] 5. Reclaim: swap the `courses.js` / `app.js` script order in `index.html`, predict, read the browser console error, fix, commit.
 
 ---
 
