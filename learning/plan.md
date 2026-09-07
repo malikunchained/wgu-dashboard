@@ -65,8 +65,8 @@ See [project.md](project.md) for scope, [file-map.md](file-map.md) for the file 
 - [x] 1. Create a GitHub account (if needed) and a new **public**, empty repo named `wgu-dashboard`.
 - [x] 2. Connect local to remote: `git remote add origin`, rename branch `master` → `main`, `git push -u origin main` (first push triggers login).
 - [x] 3. Browse the pushed code on github.com; match a commit hash to local `git log`. (Also: amended the pushed commit's message, hit the non-fast-forward rejection, and fixed it with `git push --force-with-lease` — a live demo of why amending after push is trouble.)
-- [ ] 4. Make one small real change → `git status` → `git diff` → `add` → `commit` → `push`; watch it update on GitHub. Nail down working → staged → committed → pushed.
-- [ ] 5. Reclaim: swap the `courses.js` / `app.js` script order in `index.html`, predict, read the browser console error, fix, commit.
+- [x] 4. Make one small real change → `git status` → `git diff` → `add` → `commit` → `push`; watch it update on GitHub. Nail down working → staged → committed → pushed.
+- [x] 5. Reclaim: swap the `courses.js` / `app.js` script order in `index.html`, predict, read the browser console error, fix, commit.
 
 ---
 

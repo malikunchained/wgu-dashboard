@@ -20,12 +20,12 @@ Statuses move on demonstrated evidence only, never self-report. Date format: YYY
 - note: The mental model that HTML = structure, CSS = looks, JS = behavior, and a data file = content.
 
 ### how-the-browser-loads-a-page
-- status: introduced
+- status: practicing
 - date: 2026-09-07
 - last-reviewed: 2026-09-07
 - depends-on: separation-of-concerns
-- evidence: Opened index.html directly, read the `file:///D:/...` address, and confirmed the app fully works with no server. Followed the explanation that an `https://` URL implies a server; hasn't seen the server side yet.
-- note: Browser opens index.html first; `<link>` and `<script>` tags pull in the rest; script order matters. `file://` = read from disk, no server; `http(s)://` = a server hands out the files.
+- evidence: Opened index.html directly, read the `file:///` address, confirmed no server needed. Then the reclaim task: predicted the effect of swapping the `<script>` order, made the swap, read `COURSES is not defined` in the console, and correctly reasoned out the partial failure — listeners attach before the bottom-of-file `render()` call crashes, so filters still work once `courses.js` later defines `COURSES`. Connected it to the earlier "full re-render on every click" point and understood (with guidance) that the redundancy masking the bug is a coincidence/trap, not a design win. Fixed by restoring order; verified clean console. Also saw git report no change to `index.html` after the swap-and-revert (content, not touch, is what git compares).
+- note: Scripts run top to bottom, in tag order, each fully before the next. `file://` = disk, no server; `http(s)://` = a server serves the files.
 
 ### dom-manipulation
 - status: introduced
@@ -199,7 +199,8 @@ Statuses move on demonstrated evidence only, never self-report. Date format: YYY
 - status: practicing
 - evidence: Created a public empty repo. Explained git vs GitHub and that GitHub only holds what you push. Added a remote with `git remote add origin <url>`; predicted correctly that it changes no files/commits (just a bookmark in `.git/config`). Confirmed with `git remote -v` (fetch + push directions). Renamed branch `master` → `main` with `git branch -M main`. Pushed with `git push -u origin main` — recovered calmly from an `orgin` typo by reading the error, then authenticated via the browser popup. Read the new "up to date with 'origin/main'" line and understood it as the tracking link `-u` set up.
 - note: `remote`, `origin`, branch rename, `push -u`, upstream tracking, first-push auth all covered. `git push` only sends commits, never uncommitted changes — learner stated this.
-- 2026-09-07 (task 3): matched local and GitHub commit hashes exactly; understood a hash is a commit's content fingerprint and that push copies the same commit object, not a new one. Read `(HEAD -> main, origin/main)` as both pointers on one commit. Then amended the already-pushed commit message: saw "have diverged, 1 and 1 different commits", hit the `non-fast-forward` push rejection, read it calmly, and resolved with `git push --force-with-lease`. Briefly worried amend had deleted the commit — reassured with the "same snapshot, new label, new hash; old commit orphaned but kept ~90 days" model. Now understands concretely why amending after push is trouble (and why it's fine solo).
+- 2026-09-07 (task 3): matched local and GitHub commit hashes exactly; understood a hash is a commit's content fingerprint and that push copies the same commit object, not a new one. Read `(HEAD -> main, origin/main)` as both pointers on one commit. Then amended the already-pushed commit message: saw "have diverged, 1 and 1 different commits", hit the `non-fast-forward` push rejection, read it calmly, and resolved with `git push --force-with-lease`. Briefly worried amend had deleted the commit — reassured with the "same snapshot, new label, new hash; old commit orphaned but kept ~90 days" model. Now understands concretely why amending after push is trouble (and why it's fine solo). Also asked how git knows which commits each side has — got the hash-identity + parent-chain + remembered-`origin/main` explanation.
+- 2026-09-07 (task 4): ran the full everyday cycle on real changes. Read a real `git diff`: decoded the `a/`/`b/`, `---`/`+++`, and `@@ -n,m +n,m @@` hunk headers, and identified a pure-addition hunk by the absence of flush-left `-` lines (distinguished from a markdown `---` divider in context). Held a misconception that plain `git diff` compares against the last commit; corrected by observing it show nothing after `git add`. Learned the trio: `git diff` (working vs staged), `git diff --staged` (staged vs commit), `git diff HEAD` (working vs commit); `HEAD` = current commit. Predicted correctly that after commit the branch is "ahead of origin/main by 1" and after push "up to date". Disabled the pager (`core.pager cat`). Later, unprompted, recalled the entire init→commit→remote→push sequence accurately with correct explanations of each flag (minor fixes: `.gitignore` is for unwanted not "important" files; `-M` also force-overwrites).
 
 ### readme
 - status: practicing
