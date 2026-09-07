@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Computer Science WGU · Course Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">WGU · Bachelor of Science</p>
+    <h1 class="hero-title">Computer Science WGU</h1>
+    <div class="hero-stats" id="heroStats"></div>
+  </div>
+</header>
+
+<main class="page">
+
+  <section class="controls" aria-label="Filters">
+    <div class="control-group control-search">
+      <label for="searchInput" class="control-label">Search</label>
+      <input type="text" id="searchInput" class="search-input" placeholder="Course name, ID, or Study.com course…">
+    </div>
+
+    <div class="control-group">
+      <span class="control-label">Status</span>
+      <div class="segmented" id="statusFilter" role="group" aria-label="Filter by status">
+        <button type="button" class="segmented-btn is-active" data-value="all">All</button>
+        <button type="button" class="segmented-btn" data-value="not-started">Not started</button>
+        <button type="button" class="segmented-btn" data-value="in-progress">In progress</button>
+        <button type="button" class="segmented-btn" data-value="done">Done</button>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <span class="control-label">Transfer source</span>
+      <div class="segmented" id="transferFilter" role="group" aria-label="Filter by transfer pathway source">
+        <button type="button" class="segmented-btn is-active" data-value="all">All</button>
+        <button type="button" class="segmented-btn" data-value="Sophia">Sophia</button>
+        <button type="button" class="segmented-btn" data-value="Study.com">Study.com</button>
+        <button type="button" class="segmented-btn" data-value="none">Non-transferable</button>
+      </div>
+    </div>
+
+    <button type="button" class="reset-btn" id="resetBtn">Reset filters</button>
+  </section>
+
+  <div id="courseSections"></div>
+
+  <p class="empty-state" id="emptyState" hidden>No courses match these filters.</p>
+
+</main>
+
+<footer class="page-footer">
+  <p>Course data from the combined Sophia + Study.com transfer pathway agreement (WGU B.S. Computer Science, Program ID 261). Status is saved on this device only.</p>
+</footer>
+
+<script src="courses.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
