@@ -113,6 +113,11 @@ Statuses move on demonstrated evidence only, never self-report. Date format: YYY
 - status: seed
 - note: Declaring, calling, parameters, return values; the many small named functions in app.js.
 
+### arrow-functions
+- status: seed
+- depends-on: js-functions
+- note: `=>` syntax, used everywhere in `app.js` (`.map((s) => ...)`, event callbacks). Section 4.
+
 ### array-methods
 - status: seed
 - depends-on: js-data-structures, js-functions
@@ -139,15 +144,20 @@ Statuses move on demonstrated evidence only, never self-report. Date format: YYY
 - note: One listener on a parent, `e.target.closest(...)` — how the filter groups and status dropdowns are wired.
 
 ### js-set
-- status: seed
+- status: introduced
+- date: 2026-09-07
+- last-reviewed: 2026-09-07
 - depends-on: js-data-structures
+- evidence: In the `matchesFilters()` walk, used `.size` (count) and `.has(x)` (membership → boolean), and the "size === 0 means no filter" idiom. Hasn't yet seen `.add()`/`.delete()` (those are in `setupSegmented`).
 - note: `Set` for active filters; `.has()` / `.add()` / `.delete()`.
 
 ### filtering-logic
-- status: seed
+- status: practicing
+- date: 2026-09-07
+- last-reviewed: 2026-09-07
 - depends-on: js-set, array-methods
-- evidence: Learner has good intuition here already (probe 4) but hasn't seen matchesFilters().
-- note: How search + status + transfer combine — AND across groups, OR within.
+- evidence: Walked all of `matchesFilters()`. Identified `&&` on the return as "all three groups must pass". Translated `statusOk` (after a correction that the Set holds status values, not course IDs). Predicted correctly that with both Sophia + Study.com active, a Study.com-only course shows via the OR'd line. Stated the case-insensitive-search reason for `.toLowerCase()`. Understands the model: OR within a group, AND across groups; empty Set = everything passes.
+- note: Also met "truthy/falsy" lightly (`course.sophia` is a string-or-null used as a condition).
 
 ### localstorage
 - status: introduced

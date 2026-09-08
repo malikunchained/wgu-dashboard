@@ -1,10 +1,13 @@
 # Build Plan — WGU CS Course Tracker
 
-Learning goals driving this plan: **git**, **how web apps work**, **HTML syntax**.
+Learning goals driving this plan: **git**, **how web apps work**, **HTML syntax**, **reading JavaScript line by line** (added 2026-09-07 at the learner's request).
+
 See [project.md](project.md) for scope, [file-map.md](file-map.md) for the file ledger,
 [knowledge-graph.md](knowledge-graph.md) for concept tracking.
 
 `/next-lesson` breaks one section at a time into small steps. This file is sections only.
+
+**Teaching grain (from 2026-09-07):** code lessons walk the code one line at a time, naming every piece of syntax — not chunk-by-chunk. Applies to every remaining section.
 
 ---
 
@@ -13,10 +16,10 @@ See [project.md](project.md) for scope, [file-map.md](file-map.md) for the file 
 | Decision | Plain-language | Status | Revisited in |
 |---|---|---|---|
 | Plain HTML/CSS/JS, no framework, no build step | Files a browser opens directly; no React, no npm, no bundler | **still fuzzy** — learner can't yet spot the signs in a repo | Section 1 |
-| `localStorage` for saving progress | A storage box inside one browser on one computer | **introduced** — knows it's per-machine, empty elsewhere | Section 5 |
-| Course data hard-coded in `courses.js` | Data is a JavaScript array in a code file, not a database | **introduced** — "like a database"; editing data = editing code | Section 4 |
+| `localStorage` for saving progress | A storage box inside one browser on one computer | **introduced** — knows it's per-machine, empty elsewhere | Section 6 |
+| Course data hard-coded in `courses.js` | Data is a JavaScript array in a code file, not a database | **introduced** — "like a database"; editing data = editing code | Section 5 |
 | Google Fonts loaded from the web | `index.html` pulls fonts from Google's servers at load | **still fuzzy** | Section 1 |
-| No hosting yet | Site exists only as local files on D: | decided: **deploy via GitHub Pages**, repo **public** from the start (free) | Section 7 |
+| No hosting yet | Site exists only as local files on D: | decided: **deploy via GitHub Pages**, repo **public** from the start (free) | Section 8 |
 
 ---
 
@@ -72,6 +75,8 @@ See [project.md](project.md) for scope, [file-map.md](file-map.md) for the file 
 
 ## Section 3 — A filter bar that isn't ugly
 
+> **PAUSED after Task 1** (2026-09-07). Learner wanted the JavaScript walkthrough first — resume Tasks 2–5 after Section 4.
+
 **Payload source:** project.md ("the filter is kinda sloppy and the gui for it ugly").
 
 - Walk `matchesFilters()` in `app.js` so you understand what the buttons actually do before restyling them.
@@ -82,9 +87,40 @@ See [project.md](project.md) for scope, [file-map.md](file-map.md) for the file 
 
 **You can see:** the filter bar looks and behaves noticeably better, on desktop and phone width.
 
+### Tasks
+
+- [x] 1. Read `matchesFilters()` and the filter markup in `index.html` together — how search + status + transfer combine (AND across groups, OR within a group). No code change.
+- [ ] 2. Restyle the `.controls` container in `styles.css` — layout, spacing, alignment of the groups.
+- [ ] 3. Restyle `.segmented` / `.segmented-btn` — make the active state obvious, clean up hover.
+- [ ] 4. Responsive pass — check and improve the narrow-screen `@media` block.
+- [ ] 5. Reclaim: change one condition in `matchesFilters()`, predict, test in the browser, revert; commit the section.
+
 ---
 
-## Section 4 — "How someone passed this course" Reddit links
+## Section 4 — Read your JavaScript, line by line
+
+**Payload source:** learner request (2026-09-07) — "I understand the concepts, but knowing what each line does will be very useful."
+
+- Walk **all of `app.js`** top to bottom in small passes. Every construct gets named and explained, one line at a time:
+  - `(function () { ... })();` (IIFE), `"use strict";`
+  - `const` vs `let`, scope, why the file wraps itself
+  - object literals, `Set`, `new Set()`
+  - function declarations, **arrow functions `=>`**, parameters, `return`
+  - `if`, `||` / `&&` short-circuit + truthiness, ternary `? :`
+  - **template literals** with `${ }`, multi-line strings
+  - array methods: `.map()`, `.filter()`, `.reduce()`, `.forEach()`, `.join()`
+  - DOM: `document.getElementById`, `.innerHTML`, `.createElement`, `.appendChild`
+  - events: `.addEventListener`, the event object `e`, `e.target`, `.closest()`, `.dataset`
+  - `.classList.toggle`, `.querySelectorAll`
+- **Deliverable:** you add your own `//` comments through `app.js` explaining each section in your own words, and can read any single line aloud and say what it does.
+
+**Reclaim task:** `js-functions` + `array-methods`. Pull ~5 small expressions straight from `app.js` (a `.map`, a ternary, a `&&`, a `.reduce`), predict each one's result, run them in the browser console, compare. Flips `js-functions`, `array-methods`, `arrow-functions`, `template-literals` toward known.
+
+**You can see:** an annotated `app.js` that's all yours — no mystery lines.
+
+---
+
+## Section 5 — "How someone passed this course" Reddit links
 
 **Payload source:** project.md — the app's intended edge.
 
@@ -98,7 +134,7 @@ See [project.md](project.md) for scope, [file-map.md](file-map.md) for the file 
 
 ---
 
-## Section 5 — Check off what you did today (module checklist)
+## Section 6 — Check off what you did today (module checklist)
 
 **Payload source:** project.md — daily-engagement progress tracking.
 
@@ -113,7 +149,7 @@ See [project.md](project.md) for scope, [file-map.md](file-map.md) for the file 
 
 ---
 
-## Section 6 — Progress bars
+## Section 7 — Progress bars
 
 **Payload source:** project.md ("a progress bar for the course im working on"; completion levels too far apart).
 
@@ -128,7 +164,7 @@ See [project.md](project.md) for scope, [file-map.md](file-map.md) for the file 
 
 ---
 
-## Section 7 — Live on the internet
+## Section 8 — Live on the internet
 
 **Payload source:** decided in planning — deployment as a learning goal.
 
